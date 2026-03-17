@@ -29,15 +29,12 @@ textarea{resize:none;height:110px}
 .photo-upload:hover{border-color:#cc0000}
 .photo-preview{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
 .photo-preview img{width:80px;height:80px;object-fit:cover;border-radius:10px;border:1px solid #222}
-.btn-next{width:100%;background:#cc0000;color:#fff;border:none;border-radius:12px;padding:18px;font-size:17px;font-weight:700;cursor:pointer;margin-top:28px;-webkit-appearance:none}
+.btn-next{width:100%;background:#cc0000;color:#fff;border:none;border-radius:12px;padding:18px;font-size:17px;font-weight:700;cursor:pointer;margin-top:8px;-webkit-appearance:none}
 .btn-next:disabled{background:#3a0000;color:#553333;cursor:not-allowed}
 .btn-back{background:none;border:none;color:#555;font-size:14px;cursor:pointer;padding:14px 0 0;display:block}
 .progress{display:flex;gap:6px;padding:18px 24px 0}
 .progress-dot{height:3px;flex:1;background:#1a1a1a;border-radius:2px;transition:background .3s}
-.progress-dot.done{background:#cc000
-  .welcome-screen{padding:40px 24px 32px;display:flex;flex-direction:column;min-height:100vh;position:relative;background:url('bg.jpg') center center / cover no-repeat}
-.welcome-screen::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(to bottom,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.3) 40%,rgba(0,0,0,0.75) 100%)}
-.welcome-screen .header,.welcome-screen .btn-next,.welcome-screen>div{position:relative;z-index:2}.welcome-screen.hidden{display:none}
+.progress-dot.done{background:#cc0000}
 .success-screen{padding:80px 24px;text-align:center;display:none}
 .success-screen.active{display:block}
 .success-icon{width:72px;height:72px;background:#1a0000;border:2px solid #cc0000;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px}
@@ -45,22 +42,26 @@ textarea{resize:none;height:110px}
 </head>
 <body>
 <div class="app">
-<div class="header">
-<img src="logo.png" alt="The Shop" style="max-width:300px;width:100%;display:block;">
-  <div class="red-line"></div>
+
+<div id="welcome" style="position:relative;min-height:100vh;display:flex;flex-direction:column;background:#000">
+<img src="bg.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0">
+<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(to bottom,rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.2) 50%,rgba(0,0,0,0.85) 100%);z-index:1"></div>
+<div style="position:relative;z-index:2;padding:24px 24px 0">
+<img src="logo.png" alt="The Shop" style="max-width:260px;width:100%;display:block;">
+<div style="height:3px;background:#cc0000;margin:10px 0 0"></div>
 </div>
-<div class="progress" id="progress" style="display:none">
-<div class="progress-dot" id="p1"></div><div class="progress-dot" id="p2"></div><div class="progress-dot" id="p3"></div><div class="progress-dot" id="p4"></div><div class="progress-dot" id="p5"></div>
-</div>
-<div id="welcome" style="display:flex;flex-direction:column;min-height:100vh;position:relative;background:url('bg.jpg') center center / cover no-repeat;">
-<div style="position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(to bottom,rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.85) 100%);pointer-events:none;z-index:0"></div>
-<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:40px 24px 32px;position:relative;z-index:1">
-<div style="font-size:30px;font-weight:700;line-height:1.3;margin-bottom:14px;color:#fff">Rust repair &amp; restoration specialists.</div>
+<div style="position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:24px">
+<div style="font-size:30px;font-weight:700;line-height:1.3;margin-bottom:12px;color:#fff">Rust repair &amp; restoration specialists.</div>
 <div style="font-size:16px;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:24px">Tell us about your vehicle and what you need — we'll get back to you with everything you need to know.</div>
 <button class="btn-next" onclick="startForm()">Get started</button>
 </div>
 </div>
+
+<div class="progress" id="progress" style="display:none">
+<div class="progress-dot" id="p1"></div><div class="progress-dot" id="p2"></div><div class="progress-dot" id="p3"></div><div class="progress-dot" id="p4"></div><div class="progress-dot" id="p5"></div>
+</div>
 <div class="screen" id="s1">
+<div class="header"><img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;"><div class="red-line"></div></div><br>
 <div class="step-label">Step 1 of 5</div>
 <div class="screen-heading">What do you need?</div>
 <div class="screen-sub">Select the service you're looking for.</div>
@@ -71,6 +72,7 @@ textarea{resize:none;height:110px}
 <button class="btn-back" onclick="goWelcome()">Back</button>
 </div>
 <div class="screen" id="s2">
+<div class="header"><img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;"><div class="red-line"></div></div><br>
 <div class="step-label">Step 2 of 5</div>
 <div class="screen-heading">Tell us about your vehicle.</div>
 <div class="screen-sub">We need a few details to give you an accurate assessment.</div>
@@ -84,6 +86,7 @@ textarea{resize:none;height:110px}
 <button class="btn-back" onclick="goTo(1)">Back</button>
 </div>
 <div class="screen" id="s3">
+<div class="header"><img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;"><div class="red-line"></div></div><br>
 <div class="step-label">Step 3 of 5</div>
 <div class="screen-heading">Describe the damage.</div>
 <div class="screen-sub">Tell us where the rust or damage is and how bad it looks.</div>
@@ -100,6 +103,7 @@ Tap to add photos
 <button class="btn-back" onclick="goTo(2)">Back</button>
 </div>
 <div class="screen" id="s4">
+<div class="header"><img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;"><div class="red-line"></div></div><br>
 <div class="step-label">Step 4 of 5</div>
 <div class="screen-heading">When do you want to start?</div>
 <div class="screen-sub">This helps us plan availability for you.</div>
@@ -112,6 +116,7 @@ Tap to add photos
 <button class="btn-back" onclick="goTo(3)">Back</button>
 </div>
 <div class="screen" id="s5">
+<div class="header"><img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;"><div class="red-line"></div></div><br>
 <div class="step-label">Step 5 of 5</div>
 <div class="screen-heading">Your contact info.</div>
 <div class="screen-sub">We'll use this to get back to you with next steps.</div>
@@ -121,16 +126,16 @@ Tap to add photos
 <button class="btn-next" id="next5" onclick="submitForm()" disabled>Submit request</button>
 <button class="btn-back" onclick="goTo(4)">Back</button>
 </div>
-<div class="success-screen" id="success" style="display:none">
-  <div class="success-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L19 7" stroke="#cc0000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="success-screen" id="success">
+<div class="success-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L19 7" stroke="#cc0000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
 <div style="font-size:26px;font-weight:700;margin-bottom:14px">Request sent!</div>
 <div style="font-size:16px;color:#666;line-height:1.7">Thanks! We've received your request and will be in touch soon.</div>
 </div>
 </div>
 <script>
 const data={service:"",timeframe:""};
-function startForm(){document.getElementById("welcome").classList.add("hidden");document.getElementById("progress").style.display="flex";goTo(1);}
-function goWelcome(){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById("welcome").classList.remove("hidden");document.getElementById("progress").style.display="none";}
+function startForm(){document.getElementById("welcome").style.display="none";document.getElementById("progress").style.display="flex";goTo(1);}
+function goWelcome(){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById("welcome").style.display="flex";document.getElementById("progress").style.display="none";}
 function goTo(n){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById("s"+n).classList.add("active");for(let i=1;i<=5;i++){document.getElementById("p"+i).classList.toggle("done",i<=n);}window.scrollTo(0,0);}
 function selectOption(el,key,val){el.parentElement.querySelectorAll(".option-btn").forEach(b=>b.classList.remove("selected"));el.classList.add("selected");data[key]=val;if(key==="service")document.getElementById("next1").disabled=false;if(key==="timeframe")document.getElementById("next4").disabled=false;}
 function checkS2(){const ok=document.getElementById("year").value.trim()&&document.getElementById("make").value.trim()&&document.getElementById("model").value.trim()&&document.getElementById("vtype").value;document.getElementById("next2").disabled=!ok;}
