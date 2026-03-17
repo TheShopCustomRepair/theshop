@@ -34,9 +34,10 @@ textarea{resize:none;height:110px}
 .btn-back{background:none;border:none;color:#555;font-size:14px;cursor:pointer;padding:14px 0 0;display:block}
 .progress{display:flex;gap:6px;padding:18px 24px 0}
 .progress-dot{height:3px;flex:1;background:#1a1a1a;border-radius:2px;transition:background .3s}
-.progress-dot.done{background:#cc0000}
-.welcome-screen{padding:40px 24px 32px;display:flex;flex-direction:column;min-height:70vh}
-.welcome-screen.hidden{display:none}
+.progress-dot.done{background:#cc000
+  .welcome-screen{padding:40px 24px 32px;display:flex;flex-direction:column;min-height:100vh;position:relative;background:url('bg.jpg') center center / cover no-repeat}
+.welcome-screen::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(to bottom,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.3) 40%,rgba(0,0,0,0.75) 100%)}
+.welcome-screen .header,.welcome-screen .btn-next,.welcome-screen>div{position:relative;z-index:2}.welcome-screen.hidden{display:none}
 .success-screen{padding:80px 24px;text-align:center;display:none}
 .success-screen.active{display:block}
 .success-icon{width:72px;height:72px;background:#1a0000;border:2px solid #cc0000;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px}
