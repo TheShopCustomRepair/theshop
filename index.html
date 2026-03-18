@@ -53,7 +53,7 @@ textarea{resize:none;height:110px}
   </div>
   <div style="position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;padding:24px">
     <div style="font-size:52px;font-weight:800;font-family:'Oswald',sans-serif;text-transform:uppercase;line-height:1.2;margin-bottom:12px;color:#fff">Rust Repair, Restoration &amp; Customization</div>
-    <div style="font-size:16px;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:32px">Tell me about your vehicle and what you need — and I'll get back to you ASAP.</div>
+    <div style="font-size:16px;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:32px">Tell me about your vehicle and what you need — and I'll get back to you within 24-48 hours.</div>
     <button class="btn-next" onclick="startForm()" style="max-width:260px;">Get started</button>
   </div>
 </div>
@@ -87,9 +87,6 @@ textarea{resize:none;height:110px}
   <div class="field-group"><label class="field-label">Year</label><input type="text" id="year" placeholder="e.g. 1969" oninput="checkS2()"></div>
   <div class="field-group"><label class="field-label">Make</label><input type="text" id="make" placeholder="e.g. Ford" oninput="checkS2()"></div>
   <div class="field-group"><label class="field-label">Model</label><input type="text" id="model" placeholder="e.g. Mustang" oninput="checkS2()"></div>
-  <div class="field-group"><label class="field-label">Vehicle type</label>
-    <select id="vtype" onchange="checkS2()"><option value="">Select type...</option><option>Car</option><option>Truck</option><option>SUV</option><option>Van</option><option>Motorcycle</option><option>Other</option></select>
-  </div>
   <button class="btn-next" id="next2" onclick="goTo(3)" disabled>Next</button>
   <button class="btn-back" onclick="goTo(1)">Back</button>
 </div>
@@ -117,7 +114,7 @@ textarea{resize:none;height:110px}
   <div class="step-label">Step 4 of 5</div>
   <div class="screen-heading">When do you want to start?</div>
   <div class="screen-sub">This helps us plan availability for you.</div>
-  <div class="option-btn" onclick="selectOption(this,'timeframe','ASAP')"><span class="radio"></span>ASAP</div>
+  <div class="option-btn" onclick="selectOption(this,'timeframe','Within 24-48 hours')"><span class="radio"></span>Within 24-48 hours</div>
   <div class="option-btn" onclick="selectOption(this,'timeframe','Within 1 month')"><span class="radio"></span>Within 1 month</div>
   <div class="option-btn" onclick="selectOption(this,'timeframe','Within 3 months')"><span class="radio"></span>Within 3 months</div>
   <div class="option-btn" onclick="selectOption(this,'timeframe','No rush')"><span class="radio"></span>No rush</div>
@@ -133,7 +130,7 @@ textarea{resize:none;height:110px}
   <div class="screen-sub">We'll use this to get back to you with next steps.</div>
   <div class="field-group"><label class="field-label">Full name</label><input type="text" id="name" placeholder="John Smith" oninput="checkS5()"></div>
   <div class="field-group"><label class="field-label">Phone number</label><input type="tel" id="phone" placeholder="(555) 555-5555" oninput="checkS5()"></div>
-  <div class="field-group"><label class="field-label">Email address</label><input type="email" id="email" placeholder="you@email.com" oninput="checkS5()"></div>
+  <div class="field-group"><label class="field-label">Email address <span style="color:#444;font-size:10px;text-transform:none;letter-spacing:0">(optional)</span></label><input type="email" id="email" placeholder="you@email.com" oninput="checkS5()"></div>
   <button class="btn-next" id="next5" onclick="submitForm()" disabled>Submit request</button>
   <button class="btn-back" onclick="goTo(4)">Back</button>
 </div>
@@ -151,11 +148,11 @@ function startForm(){document.getElementById("welcome").style.display="none";doc
 function goWelcome(){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById("welcome").style.display="flex";document.getElementById("progress").style.display="none";}
 function goTo(n){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById("s"+n).classList.add("active");for(let i=1;i<=5;i++){document.getElementById("p"+i).classList.toggle("done",i<=n);}window.scrollTo(0,0);}
 function selectOption(el,key,val){el.parentElement.querySelectorAll(".option-btn").forEach(b=>b.classList.remove("selected"));el.classList.add("selected");data[key]=val;if(key==="service")document.getElementById("next1").disabled=false;if(key==="timeframe")document.getElementById("next4").disabled=false;}
-function checkS2(){const ok=document.getElementById("year").value.trim()&&document.getElementById("make").value.trim()&&document.getElementById("model").value.trim()&&document.getElementById("vtype").value;document.getElementById("next2").disabled=!ok;}
+function checkS2(){const ok=document.getElementById("year").value.trim()&&document.getElementById("make").value.trim()&&document.getElementById("model").value.trim();document.getElementById("next2").disabled=!ok;}
 function checkS3(){document.getElementById("next3").disabled=!document.getElementById("desc").value.trim();}
-function checkS5(){const ok=document.getElementById("name").value.trim()&&document.getElementById("phone").value.trim()&&document.getElementById("email").value.trim();document.getElementById("next5").disabled=!ok;}
+function checkS5(){const ok=document.getElementById("name").value.trim()&&document.getElementById("phone").value.trim();document.getElementById("next5").disabled=!ok;}
 function previewPhotos(input){const preview=document.getElementById("photoPreview");preview.innerHTML="";Array.from(input.files).forEach(f=>{const img=document.createElement("img");img.src=URL.createObjectURL(f);preview.appendChild(img);});}
-function submitForm(){const subject=encodeURIComponent("New request — The Shop");const body=encodeURIComponent("SERVICE: "+data.service+"\n\nVEHICLE: "+document.getElementById("year").value+" "+document.getElementById("make").value+" "+document.getElementById("model").value+" ("+document.getElementById("vtype").value+")\n\nDAMAGE:\n"+document.getElementById("desc").value+"\n\nTIMEFRAME: "+data.timeframe+"\n"+(document.getElementById("tfnotes").value?"Notes: "+document.getElementById("tfnotes").value+"\n":"")+"\nCONTACT:\nName: "+document.getElementById("name").value+"\nPhone: "+document.getElementById("phone").value+"\nEmail: "+document.getElementById("email").value);window.location.href="mailto:theshopcustomrepair@gmail.com?subject="+subject+"&body="+body;document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById("progress").style.display="none";document.getElementById("success").classList.add("active");}
+function submitForm(){const subject=encodeURIComponent("New request — The Shop");const body=encodeURIComponent("SERVICE: "+data.service+"\n\nVEHICLE: "+document.getElementById("year").value+" "+document.getElementById("make").value+" "+document.getElementById("model").value+"\n\nDAMAGE:\n"+document.getElementById("desc").value+"\n\nTIMEFRAME: "+data.timeframe+"\n"+(document.getElementById("tfnotes").value?"Notes: "+document.getElementById("tfnotes").value+"\n":"")+"\nCONTACT:\nName: "+document.getElementById("name").value+"\nPhone: "+document.getElementById("phone").value+(document.getElementById("email").value?"\nEmail: "+document.getElementById("email").value:""));window.location.href="mailto:theshopcustomrepair@gmail.com?subject="+subject+"&body="+body;document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById("progress").style.display="none";document.getElementById("success").classList.add("active");}
 </script>
 </body>
 </html>
