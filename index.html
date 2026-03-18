@@ -10,7 +10,6 @@
 html,body{background:#000;min-height:100vh;font-family:Arial,sans-serif}
 .app{background:#000;min-height:100vh;color:#fff;max-width:480px;margin:0 auto;padding-bottom:40px}
 .header{padding:24px 24px 0}
-.red-line{height:3px;background:#cc0000;margin:10px 0 0}
 .screen{display:none;padding:24px 24px 32px}
 .screen.active{display:block}
 .step-label{font-size:11px;color:#555;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px}
@@ -39,6 +38,8 @@ textarea{resize:none;height:110px}
 .success-screen{padding:80px 24px;text-align:center;display:none}
 .success-screen.active{display:block}
 .success-icon{width:72px;height:72px;background:#1a0000;border:2px solid #cc0000;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px}
+.f3-border{position:relative;width:100%;height:16px;margin-top:10px}
+.f3-border svg{width:100%;height:16px;overflow:visible}
 </style>
 </head>
 <body>
@@ -49,12 +50,16 @@ textarea{resize:none;height:110px}
   <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.45);z-index:1;pointer-events:none"></div>
   <div style="position:absolute;top:0;left:0;right:0;z-index:2;padding:24px 24px 0;display:flex;flex-direction:column;align-items:center">
     <img src="logo.png" alt="The Shop" style="width:220px;display:block;image-rendering:-webkit-optimize-contrast;">
-    <div style="width:100%;margin-top:10px;display:flex;align-items:center;gap:0">
-      <div style="flex:1;height:3px;background:#cc0000"></div>
-      <div style="width:6px;height:6px;background:#cc0000;transform:rotate(45deg);margin:0 6px;flex-shrink:0"></div>
-      <div style="width:30px;height:3px;background:#cc0000"></div>
-      <div style="width:6px;height:6px;background:#cc0000;transform:rotate(45deg);margin:0 6px;flex-shrink:0"></div>
-      <div style="flex:1;height:3px;background:#cc0000"></div>
+    <!-- F3 border -->
+    <div class="f3-border">
+      <svg viewBox="0 0 480 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 0 L0 14 L18 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M480 0 L480 14 L462 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="0" y1="7" x2="480" y2="7" stroke="#cc0000" stroke-width="4"/>
+        <circle cx="0" cy="7" r="5" fill="#cc0000"/>
+        <circle cx="480" cy="7" r="5" fill="#cc0000"/>
+        <line x1="0" y1="14" x2="480" y2="14" stroke="#cc0000" stroke-width="1" opacity="0.25"/>
+      </svg>
     </div>
   </div>
   <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:24px;width:100%">
@@ -82,7 +87,10 @@ textarea{resize:none;height:110px}
 </div>
 
 <div class="screen" id="s1">
-  <div class="header"><img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;"><div class="red-line"></div></div><br>
+  <div class="header">
+    <img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;">
+    <div class="f3-border"><svg viewBox="0 0 480 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L0 14 L18 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M480 0 L480 14 L462 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><line x1="0" y1="7" x2="480" y2="7" stroke="#cc0000" stroke-width="4"/><circle cx="0" cy="7" r="5" fill="#cc0000"/><circle cx="480" cy="7" r="5" fill="#cc0000"/><line x1="0" y1="14" x2="480" y2="14" stroke="#cc0000" stroke-width="1" opacity="0.25"/></svg></div>
+  </div><br>
   <div class="step-label">Step 1 of 5</div>
   <div class="screen-heading">What do you need?</div>
   <div class="screen-sub">Select the service you're looking for.</div>
@@ -95,10 +103,13 @@ textarea{resize:none;height:110px}
 </div>
 
 <div class="screen" id="s2">
-  <div class="header"><img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;"><div class="red-line"></div></div><br>
+  <div class="header">
+    <img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;">
+    <div class="f3-border"><svg viewBox="0 0 480 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L0 14 L18 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M480 0 L480 14 L462 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><line x1="0" y1="7" x2="480" y2="7" stroke="#cc0000" stroke-width="4"/><circle cx="0" cy="7" r="5" fill="#cc0000"/><circle cx="480" cy="7" r="5" fill="#cc0000"/><line x1="0" y1="14" x2="480" y2="14" stroke="#cc0000" stroke-width="1" opacity="0.25"/></svg></div>
+  </div><br>
   <div class="step-label">Step 2 of 5</div>
   <div class="screen-heading">Tell me about your vehicle.</div>
-  <div class="screen-sub">i need a few details to give you an accurate assessment.</div>
+  <div class="screen-sub">We need a few details to give you an accurate assessment.</div>
   <div class="field-group"><label class="field-label">Year</label><input type="text" id="year" placeholder="e.g. 1969" oninput="checkS2()"></div>
   <div class="field-group"><label class="field-label">Make</label><input type="text" id="make" placeholder="e.g. Ford" oninput="checkS2()"></div>
   <div class="field-group"><label class="field-label">Model</label><input type="text" id="model" placeholder="e.g. Mustang" oninput="checkS2()"></div>
@@ -107,10 +118,13 @@ textarea{resize:none;height:110px}
 </div>
 
 <div class="screen" id="s3">
-  <div class="header"><img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;"><div class="red-line"></div></div><br>
+  <div class="header">
+    <img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;">
+    <div class="f3-border"><svg viewBox="0 0 480 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L0 14 L18 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M480 0 L480 14 L462 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><line x1="0" y1="7" x2="480" y2="7" stroke="#cc0000" stroke-width="4"/><circle cx="0" cy="7" r="5" fill="#cc0000"/><circle cx="480" cy="7" r="5" fill="#cc0000"/><line x1="0" y1="14" x2="480" y2="14" stroke="#cc0000" stroke-width="1" opacity="0.25"/></svg></div>
+  </div><br>
   <div class="step-label">Step 3 of 5</div>
   <div class="screen-heading">Describe the damage.</div>
-  <div class="screen-sub">Tell me where the rust or damage is and how bad it looks.</div>
+  <div class="screen-sub">Tell us where the rust or damage is and how bad it looks.</div>
   <div class="field-group"><label class="field-label">Description</label><textarea id="desc" placeholder="e.g. Rocker panels on both sides..." oninput="checkS3()"></textarea></div>
   <div class="field-group"><label class="field-label">Photos</label>
     <div class="photo-upload" onclick="document.getElementById('photos').click()">
@@ -125,10 +139,13 @@ textarea{resize:none;height:110px}
 </div>
 
 <div class="screen" id="s4">
-  <div class="header"><img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;"><div class="red-line"></div></div><br>
+  <div class="header">
+    <img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;">
+    <div class="f3-border"><svg viewBox="0 0 480 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L0 14 L18 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M480 0 L480 14 L462 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><line x1="0" y1="7" x2="480" y2="7" stroke="#cc0000" stroke-width="4"/><circle cx="0" cy="7" r="5" fill="#cc0000"/><circle cx="480" cy="7" r="5" fill="#cc0000"/><line x1="0" y1="14" x2="480" y2="14" stroke="#cc0000" stroke-width="1" opacity="0.25"/></svg></div>
+  </div><br>
   <div class="step-label">Step 4 of 5</div>
   <div class="screen-heading">When do you want to start?</div>
-  <div class="screen-sub">This helps me plan availability for you.</div>
+  <div class="screen-sub">This helps us plan availability for you.</div>
   <div class="option-btn" onclick="selectOption(this,'timeframe','ASAP')"><span class="radio"></span>ASAP</div>
   <div class="option-btn" onclick="selectOption(this,'timeframe','Within 1 month')"><span class="radio"></span>Within 1 month</div>
   <div class="option-btn" onclick="selectOption(this,'timeframe','Within 3 months')"><span class="radio"></span>Within 3 months</div>
@@ -139,10 +156,13 @@ textarea{resize:none;height:110px}
 </div>
 
 <div class="screen" id="s5">
-  <div class="header"><img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;"><div class="red-line"></div></div><br>
+  <div class="header">
+    <img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;">
+    <div class="f3-border"><svg viewBox="0 0 480 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L0 14 L18 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M480 0 L480 14 L462 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><line x1="0" y1="7" x2="480" y2="7" stroke="#cc0000" stroke-width="4"/><circle cx="0" cy="7" r="5" fill="#cc0000"/><circle cx="480" cy="7" r="5" fill="#cc0000"/><line x1="0" y1="14" x2="480" y2="14" stroke="#cc0000" stroke-width="1" opacity="0.25"/></svg></div>
+  </div><br>
   <div class="step-label">Step 5 of 5</div>
   <div class="screen-heading">Your contact info.</div>
-  <div class="screen-sub">I'll use this to get back to you with next steps.</div>
+  <div class="screen-sub">We'll use this to get back to you with next steps.</div>
   <div class="field-group"><label class="field-label">Full name</label><input type="text" id="name" placeholder="John Smith" oninput="checkS5()"></div>
   <div class="field-group"><label class="field-label">Phone number</label><input type="tel" id="phone" placeholder="(555) 555-5555" oninput="checkS5()"></div>
   <div class="field-group"><label class="field-label">Email address <span style="color:#444;font-size:10px;text-transform:none;letter-spacing:0">(optional)</span></label><input type="email" id="email" placeholder="you@email.com"></div>
@@ -153,7 +173,7 @@ textarea{resize:none;height:110px}
 <div class="success-screen" id="success">
   <div class="success-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L19 7" stroke="#cc0000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
   <div style="font-size:26px;font-weight:700;margin-bottom:14px">Request sent!</div>
-  <div style="font-size:16px;color:#666;line-height:1.7">Thanks! I've received your request and will be in touch shortly.</div>
+  <div style="font-size:16px;color:#666;line-height:1.7">Thanks! We've received your request and will be in touch soon.</div>
 </div>
 
 </div>
@@ -186,12 +206,12 @@ async function submitForm(){
       document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
       document.getElementById("progress").style.display="none";
       document.getElementById("success").classList.add("active");
-    } else {
+    }else{
       btn.disabled=false;
       btn.textContent="Submit request";
       alert("Something went wrong. Please try again.");
     }
-  } catch(e){
+  }catch(e){
     btn.disabled=false;
     btn.textContent="Submit request";
     alert("Something went wrong. Please try again.");
