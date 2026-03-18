@@ -49,7 +49,6 @@ textarea{resize:none;height:110px}
   <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.45);z-index:1;pointer-events:none"></div>
   <div style="position:absolute;top:0;left:0;right:0;z-index:2;padding:24px 24px 0;display:flex;flex-direction:column;align-items:center">
     <img src="logo.png" alt="The Shop" style="width:220px;display:block;image-rendering:-webkit-optimize-contrast;">
-    <!-- Spiced up border -->
     <div style="width:100%;margin-top:10px;display:flex;align-items:center;gap:0">
       <div style="flex:1;height:3px;background:#cc0000"></div>
       <div style="width:6px;height:6px;background:#cc0000;transform:rotate(45deg);margin:0 6px;flex-shrink:0"></div>
@@ -98,7 +97,7 @@ textarea{resize:none;height:110px}
 <div class="screen" id="s2">
   <div class="header"><img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;"><div class="red-line"></div></div><br>
   <div class="step-label">Step 2 of 5</div>
-  <div class="screen-heading">Tell us about your vehicle.</div>
+  <div class="screen-heading">Tell me about your vehicle.</div>
   <div class="screen-sub">We need a few details to give you an accurate assessment.</div>
   <div class="field-group"><label class="field-label">Year</label><input type="text" id="year" placeholder="e.g. 1969" oninput="checkS2()"></div>
   <div class="field-group"><label class="field-label">Make</label><input type="text" id="make" placeholder="e.g. Ford" oninput="checkS2()"></div>
@@ -118,7 +117,7 @@ textarea{resize:none;height:110px}
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style="display:block;margin:0 auto 10px"><rect x="2" y="5" width="20" height="15" rx="3" stroke="#555" stroke-width="1.5"/><circle cx="12" cy="12" r="3.5" stroke="#555" stroke-width="1.5"/></svg>
       Tap to add photos
     </div>
-    <input type="file" id="photos" multiple accept="image/*" style="display:none" onchange="previewPhotos(this)">
+    <input type="file" id="photos" name="photos" multiple accept="image/*" style="display:none" onchange="previewPhotos(this)">
     <div class="photo-preview" id="photoPreview"></div>
   </div>
   <button class="btn-next" id="next3" onclick="goTo(4)" disabled>Next</button>
@@ -168,7 +167,38 @@ function checkS2(){const ok=document.getElementById("year").value.trim()&&docume
 function checkS3(){document.getElementById("next3").disabled=!document.getElementById("desc").value.trim();}
 function checkS5(){const ok=document.getElementById("name").value.trim()&&document.getElementById("phone").value.trim();document.getElementById("next5").disabled=!ok;}
 function previewPhotos(input){const preview=document.getElementById("photoPreview");preview.innerHTML="";Array.from(input.files).forEach(f=>{const img=document.createElement("img");img.src=URL.createObjectURL(f);preview.appendChild(img);});}
-function submitForm(){const subject=encodeURIComponent("New request — The Shop");const body=encodeURIComponent("SERVICE: "+data.service+"\n\nVEHICLE: "+document.getElementById("year").value+" "+document.getElementById("make").value+" "+document.getElementById("model").value+"\n\nDAMAGE:\n"+document.getElementById("desc").value+"\n\nTIMEFRAME: "+data.timeframe+"\n"+(document.getElementById("tfnotes").value?"Notes: "+document.getElementById("tfnotes").value+"\n":"")+"\nCONTACT:\nName: "+document.getElementById("name").value+"\nPhone: "+document.getElementById("phone").value+(document.getElementById("email").value?"\nEmail: "+document.getElementById("email").value:""));window.location.href="mailto:theshopcustomrepair@gmail.com?subject="+subject+"&body="+body;document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById("progress").style.display="none";document.getElementById("success").classList.add("active");}
+async function submitForm(){
+  const btn=document.getElementById("next5");
+  btn.disabled=true;
+  btn.textContent="Sending...";
+  const formData=new FormData();
+  formData.append("service",data.service);
+  formData.append("vehicle",document.getElementById("year").value+" "+document.getElementById("make").value+" "+document.getElementById("model").value);
+  formData.append("damage",document.getElementById("desc").value);
+  formData.append("timeframe",data.timeframe);
+  if(document.getElementById("tfnotes").value)formData.append("notes",document.getElementById("tfnotes").value);
+  formData.append("name",document.getElementById("name").value);
+  formData.append("phone",document.getElementById("phone").value);
+  if(document.getElementById("email").value)formData.append("email",document.getElementById("email").value);
+  const photoFiles=document.getElementById("photos").files;
+  for(let i=0;i<photoFiles.length;i++){formData.append("photos",photoFiles[i]);}
+  try{
+    const res=await fetch("https://formspree.io/f/mreyrdvp",{method:"POST",body:formData,headers:{Accept:"application/json"}});
+    if(res.ok){
+      document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+      document.getElementById("progress").style.display="none";
+      document.getElementById("success").classList.add("active");
+    } else {
+      btn.disabled=false;
+      btn.textContent="Submit request";
+      alert("Something went wrong. Please try again.");
+    }
+  } catch(e){
+    btn.disabled=false;
+    btn.textContent="Submit request";
+    alert("Something went wrong. Please try again.");
+  }
+}
 </script>
 </body>
 </html>
