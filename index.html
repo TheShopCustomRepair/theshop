@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html langa="en">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,15 +49,22 @@ textarea{resize:none;height:110px}
   <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.45);z-index:1;pointer-events:none"></div>
   <div style="position:absolute;top:0;left:0;right:0;z-index:2;padding:24px 24px 0;display:flex;flex-direction:column;align-items:center">
     <img src="logo.png" alt="The Shop" style="width:220px;display:block;image-rendering:-webkit-optimize-contrast;">
-    <div style="height:3px;background:#cc0000;margin:10px 0 0;width:100%"></div>
+    <!-- Spiced up border -->
+    <div style="width:100%;margin-top:10px;display:flex;align-items:center;gap:0">
+      <div style="flex:1;height:3px;background:#cc0000"></div>
+      <div style="width:6px;height:6px;background:#cc0000;transform:rotate(45deg);margin:0 6px;flex-shrink:0"></div>
+      <div style="width:30px;height:3px;background:#cc0000"></div>
+      <div style="width:6px;height:6px;background:#cc0000;transform:rotate(45deg);margin:0 6px;flex-shrink:0"></div>
+      <div style="flex:1;height:3px;background:#cc0000"></div>
+    </div>
   </div>
   <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:24px;width:100%">
     <div style="margin-bottom:20px;width:100%">
-      <div style="font-family:'Playfair Display',serif;font-size:42px;font-weight:700;font-style:italic;color:#fff;line-height:1.15;letter-spacing:1px">Rust Repair,</div>
-      <div style="font-family:'Playfair Display',serif;font-size:42px;font-weight:700;font-style:italic;color:#fff;line-height:1.15;letter-spacing:1px">Restoration</div>
+      <div style="font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:#fff;line-height:1.15;letter-spacing:1px">Rust Repair,</div>
+      <div style="font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:#fff;line-height:1.15;letter-spacing:1px">Restoration</div>
       <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:4px">
         <div style="height:1px;background:#cc0000;width:30px"></div>
-        <div style="font-family:'Playfair Display',serif;font-size:42px;font-weight:700;font-style:italic;color:#cc0000;line-height:1.15;letter-spacing:1px">&amp; Customization</div>
+        <div style="font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:#cc0000;line-height:1.15;letter-spacing:1px">&amp; Customization</div>
         <div style="height:1px;background:#cc0000;width:30px"></div>
       </div>
     </div>
