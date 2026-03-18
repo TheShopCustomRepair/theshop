@@ -43,93 +43,107 @@ textarea{resize:none;height:110px}
 </head>
 <body>
 <div class="app">
-<div id="welcome" style="position:relative;min-height:100vh;display:flex;flex-direction:column;background:#000">
-<img src="bg.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0">
-<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(to bottom,rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.2) 50%,rgba(0,0,0,0.85) 100%);z-index:1;pointer-events:none"></div>
-<div style="position:relative;z-index:2;padding:24px 24px 0">
-<img src="logo.png" alt="The Shop" style="max-width:260px;width:100%;display:block;">
-<div style="height:3px;background:#cc0000;margin:10px 0 0"></div>
+
+<div id="welcome" style="position:relative;height:100vh;display:flex;flex-direction:column;background:#000;overflow:hidden">
+  <img src="bg.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0">
+  <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(to bottom,rgba(0,0,0,0.15) 0%,rgba(0,0,0,0.05) 40%,rgba(0,0,0,0.6) 100%);z-index:1;pointer-events:none"></div>
+  <div style="position:relative;z-index:2;padding:24px 24px 0;flex-shrink:0">
+    <img src="logo.png" alt="The Shop" style="max-width:260px;width:100%;display:block;">
+    <div style="height:3px;background:#cc0000;margin:10px 0 0"></div>
+  </div>
+  <div style="position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;padding:24px">
+    <div style="font-size:52px;font-weight:800;font-family:'Oswald',sans-serif;text-transform:uppercase;line-height:1.2;margin-bottom:12px;color:#fff">Rust Repair, Restoration &amp; Customization</div>
+    <div style="font-size:16px;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:32px">Tell me about your vehicle and what you need — and I'll get back to you ASAP.</div>
+    <button class="btn-next" onclick="startForm()" style="max-width:260px;">Get started</button>
+  </div>
 </div>
-<div style="position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:24px">
-<div style="font-size:52px;font-weight:800;font-family:'Oswald',sans-serif;text-transform:uppercase;line-height:1.2;margin-bottom:12px;color:#fff">Rust Repair, Restoration &amp; Customization</div>
-<div style="font-size:16px;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:24px">Tell me about your vehicle and what you need — and I'll get back to you ASAP.</div>
-<button class="btn-next" onclick="startForm()">Get started</button>
-</div>
-</div>
+
 <div class="progress" id="progress" style="display:none">
-<div class="progress-dot" id="p1"></div><div class="progress-dot" id="p2"></div><div class="progress-dot" id="p3"></div><div class="progress-dot" id="p4"></div><div class="progress-dot" id="p5"></div>
+  <div class="progress-dot" id="p1"></div>
+  <div class="progress-dot" id="p2"></div>
+  <div class="progress-dot" id="p3"></div>
+  <div class="progress-dot" id="p4"></div>
+  <div class="progress-dot" id="p5"></div>
 </div>
+
 <div class="screen" id="s1">
-<div class="header"><img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;"><div class="red-line"></div></div><br>
-<div class="step-label">Step 1 of 5</div>
-<div class="screen-heading">What do you need?</div>
-<div class="screen-sub">Select the service you're looking for.</div>
-<div class="option-btn" onclick="selectOption(this,'service','Rust repair')"><span class="radio"></span>Rust repair</div>
-<div class="option-btn" onclick="selectOption(this,'service','Restoration')"><span class="radio"></span>Restoration</div>
-  <div class="option-btn" onclick="selectOption(this,'service','Restoration')"><span class="radio"></span>Customization</div><div class="option-btn" onclick="selectOption(this,'service','Other')"><span class="radio"></span>Other</div>
-<button class="btn-next" id="next1" onclick="goTo(2)" disabled>Next</button>
-<button class="btn-back" onclick="goWelcome()">Back</button>
+  <div class="header"><img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;"><div class="red-line"></div></div><br>
+  <div class="step-label">Step 1 of 5</div>
+  <div class="screen-heading">What do you need?</div>
+  <div class="screen-sub">Select the service you're looking for.</div>
+  <div class="option-btn" onclick="selectOption(this,'service','Rust repair')"><span class="radio"></span>Rust repair</div>
+  <div class="option-btn" onclick="selectOption(this,'service','Restoration')"><span class="radio"></span>Restoration</div>
+  <div class="option-btn" onclick="selectOption(this,'service','Customization')"><span class="radio"></span>Customization</div>
+  <div class="option-btn" onclick="selectOption(this,'service','Other')"><span class="radio"></span>Other</div>
+  <button class="btn-next" id="next1" onclick="goTo(2)" disabled>Next</button>
+  <button class="btn-back" onclick="goWelcome()">Back</button>
 </div>
+
 <div class="screen" id="s2">
-<div class="header"><img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;"><div class="red-line"></div></div><br>
-<div class="step-label">Step 2 of 5</div>
-<div class="screen-heading">Tell us about your vehicle.</div>
-<div class="screen-sub">We need a few details to give you an accurate assessment.</div>
-<div class="field-group"><label class="field-label">Year</label><input type="text" id="year" placeholder="e.g. 1969" oninput="checkS2()"></div>
-<div class="field-group"><label class="field-label">Make</label><input type="text" id="make" placeholder="e.g. Ford" oninput="checkS2()"></div>
-<div class="field-group"><label class="field-label">Model</label><input type="text" id="model" placeholder="e.g. Mustang" oninput="checkS2()"></div>
-<div class="field-group"><label class="field-label">Vehicle type</label>
-<select id="vtype" onchange="checkS2()"><option value="">Select type...</option><option>Car</option><option>Truck</option><option>SUV</option><option>Van</option><option>Motorcycle</option><option>Other</option></select>
+  <div class="header"><img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;"><div class="red-line"></div></div><br>
+  <div class="step-label">Step 2 of 5</div>
+  <div class="screen-heading">Tell us about your vehicle.</div>
+  <div class="screen-sub">We need a few details to give you an accurate assessment.</div>
+  <div class="field-group"><label class="field-label">Year</label><input type="text" id="year" placeholder="e.g. 1969" oninput="checkS2()"></div>
+  <div class="field-group"><label class="field-label">Make</label><input type="text" id="make" placeholder="e.g. Ford" oninput="checkS2()"></div>
+  <div class="field-group"><label class="field-label">Model</label><input type="text" id="model" placeholder="e.g. Mustang" oninput="checkS2()"></div>
+  <div class="field-group"><label class="field-label">Vehicle type</label>
+    <select id="vtype" onchange="checkS2()"><option value="">Select type...</option><option>Car</option><option>Truck</option><option>SUV</option><option>Van</option><option>Motorcycle</option><option>Other</option></select>
+  </div>
+  <button class="btn-next" id="next2" onclick="goTo(3)" disabled>Next</button>
+  <button class="btn-back" onclick="goTo(1)">Back</button>
 </div>
-<button class="btn-next" id="next2" onclick="goTo(3)" disabled>Next</button>
-<button class="btn-back" onclick="goTo(1)">Back</button>
-</div>
+
 <div class="screen" id="s3">
-<div class="header"><img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;"><div class="red-line"></div></div><br>
-<div class="step-label">Step 3 of 5</div>
-<div class="screen-heading">Describe the damage.</div>
-<div class="screen-sub">Tell us where the rust or damage is and how bad it looks.</div>
-<div class="field-group"><label class="field-label">Description</label><textarea id="desc" placeholder="e.g. Rocker panels on both sides..." oninput="checkS3()"></textarea></div>
-<div class="field-group"><label class="field-label">Photos</label>
-<div class="photo-upload" onclick="document.getElementById('photos').click()">
-<svg width="28" height="28" viewBox="0 0 24 24" fill="none" style="display:block;margin:0 auto 10px"><rect x="2" y="5" width="20" height="15" rx="3" stroke="#555" stroke-width="1.5"/><circle cx="12" cy="12" r="3.5" stroke="#555" stroke-width="1.5"/></svg>
-Tap to add photos
+  <div class="header"><img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;"><div class="red-line"></div></div><br>
+  <div class="step-label">Step 3 of 5</div>
+  <div class="screen-heading">Describe the damage.</div>
+  <div class="screen-sub">Tell us where the rust or damage is and how bad it looks.</div>
+  <div class="field-group"><label class="field-label">Description</label><textarea id="desc" placeholder="e.g. Rocker panels on both sides..." oninput="checkS3()"></textarea></div>
+  <div class="field-group"><label class="field-label">Photos</label>
+    <div class="photo-upload" onclick="document.getElementById('photos').click()">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style="display:block;margin:0 auto 10px"><rect x="2" y="5" width="20" height="15" rx="3" stroke="#555" stroke-width="1.5"/><circle cx="12" cy="12" r="3.5" stroke="#555" stroke-width="1.5"/></svg>
+      Tap to add photos
+    </div>
+    <input type="file" id="photos" multiple accept="image/*" style="display:none" onchange="previewPhotos(this)">
+    <div class="photo-preview" id="photoPreview"></div>
+  </div>
+  <button class="btn-next" id="next3" onclick="goTo(4)" disabled>Next</button>
+  <button class="btn-back" onclick="goTo(2)">Back</button>
 </div>
-<input type="file" id="photos" multiple accept="image/*" style="display:none" onchange="previewPhotos(this)">
-<div class="photo-preview" id="photoPreview"></div>
-</div>
-<button class="btn-next" id="next3" onclick="goTo(4)" disabled>Next</button>
-<button class="btn-back" onclick="goTo(2)">Back</button>
-</div>
+
 <div class="screen" id="s4">
-<div class="header"><img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;"><div class="red-line"></div></div><br>
-<div class="step-label">Step 4 of 5</div>
-<div class="screen-heading">When do you want to start?</div>
-<div class="screen-sub">This helps us plan availability for you.</div>
-<div class="option-btn" onclick="selectOption(this,'timeframe','ASAP')"><span class="radio"></span>ASAP</div>
-<div class="option-btn" onclick="selectOption(this,'timeframe','Within 1 month')"><span class="radio"></span>Within 1 month</div>
-<div class="option-btn" onclick="selectOption(this,'timeframe','Within 3 months')"><span class="radio"></span>Within 3 months</div>
-<div class="option-btn" onclick="selectOption(this,'timeframe','No rush')"><span class="radio"></span>No rush</div>
-<div style="margin-top:14px"><label class="field-label">Additional notes (optional)</label><textarea id="tfnotes" placeholder="Anything else about your timeline..." style="height:90px"></textarea></div>
-<button class="btn-next" id="next4" onclick="goTo(5)" disabled>Next</button>
-<button class="btn-back" onclick="goTo(3)">Back</button>
+  <div class="header"><img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;"><div class="red-line"></div></div><br>
+  <div class="step-label">Step 4 of 5</div>
+  <div class="screen-heading">When do you want to start?</div>
+  <div class="screen-sub">This helps us plan availability for you.</div>
+  <div class="option-btn" onclick="selectOption(this,'timeframe','ASAP')"><span class="radio"></span>ASAP</div>
+  <div class="option-btn" onclick="selectOption(this,'timeframe','Within 1 month')"><span class="radio"></span>Within 1 month</div>
+  <div class="option-btn" onclick="selectOption(this,'timeframe','Within 3 months')"><span class="radio"></span>Within 3 months</div>
+  <div class="option-btn" onclick="selectOption(this,'timeframe','No rush')"><span class="radio"></span>No rush</div>
+  <div style="margin-top:14px"><label class="field-label">Additional notes (optional)</label><textarea id="tfnotes" placeholder="Anything else about your timeline..." style="height:90px"></textarea></div>
+  <button class="btn-next" id="next4" onclick="goTo(5)" disabled>Next</button>
+  <button class="btn-back" onclick="goTo(3)">Back</button>
 </div>
+
 <div class="screen" id="s5">
-<div class="header"><img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;"><div class="red-line"></div></div><br>
-<div class="step-label">Step 5 of 5</div>
-<div class="screen-heading">Your contact info.</div>
-<div class="screen-sub">We'll use this to get back to you with next steps.</div>
-<div class="field-group"><label class="field-label">Full name</label><input type="text" id="name" placeholder="John Smith" oninput="checkS5()"></div>
-<div class="field-group"><label class="field-label">Phone number</label><input type="tel" id="phone" placeholder="(555) 555-5555" oninput="checkS5()"></div>
-<div class="field-group"><label class="field-label">Email address</label><input type="email" id="email" placeholder="you@email.com" oninput="checkS5()"></div>
-<button class="btn-next" id="next5" onclick="submitForm()" disabled>Submit request</button>
-<button class="btn-back" onclick="goTo(4)">Back</button>
+  <div class="header"><img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;"><div class="red-line"></div></div><br>
+  <div class="step-label">Step 5 of 5</div>
+  <div class="screen-heading">Your contact info.</div>
+  <div class="screen-sub">We'll use this to get back to you with next steps.</div>
+  <div class="field-group"><label class="field-label">Full name</label><input type="text" id="name" placeholder="John Smith" oninput="checkS5()"></div>
+  <div class="field-group"><label class="field-label">Phone number</label><input type="tel" id="phone" placeholder="(555) 555-5555" oninput="checkS5()"></div>
+  <div class="field-group"><label class="field-label">Email address</label><input type="email" id="email" placeholder="you@email.com" oninput="checkS5()"></div>
+  <button class="btn-next" id="next5" onclick="submitForm()" disabled>Submit request</button>
+  <button class="btn-back" onclick="goTo(4)">Back</button>
 </div>
+
 <div class="success-screen" id="success">
-<div class="success-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L19 7" stroke="#cc0000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-<div style="font-size:26px;font-weight:700;margin-bottom:14px">Request sent!</div>
-<div style="font-size:16px;color:#666;line-height:1.7">Thanks! We've received your request and will be in touch soon.</div>
+  <div class="success-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L19 7" stroke="#cc0000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div style="font-size:26px;font-weight:700;margin-bottom:14px">Request sent!</div>
+  <div style="font-size:16px;color:#666;line-height:1.7">Thanks! We've received your request and will be in touch soon.</div>
 </div>
+
 </div>
 <script>
 const data={service:"",timeframe:""};
