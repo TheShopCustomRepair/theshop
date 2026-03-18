@@ -114,7 +114,7 @@ textarea{resize:none;height:110px}
   <div class="step-label">Step 4 of 5</div>
   <div class="screen-heading">When do you want to start?</div>
   <div class="screen-sub">This helps us plan availability for you.</div>
-  <div class="option-btn" onclick="selectOption(this,'timeframe','Within 24-48 hours')"><span class="radio"></span>Within 24-48 hours</div>
+  <div class="option-btn" onclick="selectOption(this,'timeframe','ASAP')"><span class="radio"></span>ASAP</div>
   <div class="option-btn" onclick="selectOption(this,'timeframe','Within 1 month')"><span class="radio"></span>Within 1 month</div>
   <div class="option-btn" onclick="selectOption(this,'timeframe','Within 3 months')"><span class="radio"></span>Within 3 months</div>
   <div class="option-btn" onclick="selectOption(this,'timeframe','No rush')"><span class="radio"></span>No rush</div>
@@ -130,7 +130,7 @@ textarea{resize:none;height:110px}
   <div class="screen-sub">We'll use this to get back to you with next steps.</div>
   <div class="field-group"><label class="field-label">Full name</label><input type="text" id="name" placeholder="John Smith" oninput="checkS5()"></div>
   <div class="field-group"><label class="field-label">Phone number</label><input type="tel" id="phone" placeholder="(555) 555-5555" oninput="checkS5()"></div>
-  <div class="field-group"><label class="field-label">Email address <span style="color:#444;font-size:10px;text-transform:none;letter-spacing:0">(optional)</span></label><input type="email" id="email" placeholder="you@email.com" oninput="checkS5()"></div>
+  <div class="field-group"><label class="field-label">Email address <span style="color:#444;font-size:10px;text-transform:none;letter-spacing:0">(optional)</span></label><input type="email" id="email" placeholder="you@email.com"></div>
   <button class="btn-next" id="next5" onclick="submitForm()" disabled>Submit request</button>
   <button class="btn-back" onclick="goTo(4)">Back</button>
 </div>
