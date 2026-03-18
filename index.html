@@ -39,6 +39,7 @@ textarea{resize:none;height:110px}
 .success-screen{padding:80px 24px;text-align:center;display:none}
 .success-screen.active{display:block}
 .success-icon{width:72px;height:72px;background:#1a0000;border:2px solid #cc0000;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px}
+.squish{font-family:'Bebas Neue',sans-serif;font-size:88px;letter-spacing:4px;text-transform:uppercase;line-height:1;transform:scaleY(0.45);transform-origin:top center;display:block;margin-bottom:-10px}
 </style>
 </head>
 <body>
@@ -52,9 +53,11 @@ textarea{resize:none;height:110px}
     <div style="height:3px;background:#cc0000;margin:10px 0 0;width:100%"></div>
   </div>
   <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:24px;width:100%">
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:64px;letter-spacing:3px;color:#fff;text-transform:uppercase;line-height:1;margin-bottom:6px">Rust Repair</div>
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:64px;letter-spacing:3px;color:#fff;text-transform:uppercase;line-height:1;margin-bottom:6px">Restoration</div>
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:64px;letter-spacing:3px;color:#cc0000;text-transform:uppercase;line-height:1;margin-bottom:20px">Customization</div>
+    <div style="margin-bottom:24px;width:100%">
+      <span class="squish" style="color:#fff">Rust Repair</span>
+      <span class="squish" style="color:#fff">Restoration</span>
+      <span class="squish" style="color:#cc0000">Customization</span>
+    </div>
     <div style="width:50px;height:3px;background:#cc0000;margin-bottom:20px"></div>
     <div style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.7;margin-bottom:32px;max-width:320px">Tell me about your vehicle and what you need — I'll get back to you within 24-48 hours.</div>
     <button class="btn-next" onclick="startForm()" style="max-width:260px;margin:0 auto;">Get started</button>
