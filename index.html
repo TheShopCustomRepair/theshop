@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Shop</title>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:#000;min-height:100vh;font-family:Arial,sans-serif}
@@ -39,7 +39,6 @@ textarea{resize:none;height:110px}
 .success-screen{padding:80px 24px;text-align:center;display:none}
 .success-screen.active{display:block}
 .success-icon{width:72px;height:72px;background:#1a0000;border:2px solid #cc0000;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px}
-.squish{font-family:'Bebas Neue',sans-serif;font-size:88px;letter-spacing:4px;text-transform:uppercase;line-height:1;transform:scaleY(0.45);transform-origin:top center;display:block;margin-bottom:-10px}
 </style>
 </head>
 <body>
@@ -53,13 +52,17 @@ textarea{resize:none;height:110px}
     <div style="height:3px;background:#cc0000;margin:10px 0 0;width:100%"></div>
   </div>
   <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:24px;width:100%">
-    <div style="margin-bottom:24px;width:100%">
-      <span class="squish" style="color:#fff">Rust Repair</span>
-      <span class="squish" style="color:#fff">Restoration</span>
-      <span class="squish" style="color:#cc0000">Customization</span>
+    <div style="margin-bottom:20px;width:100%">
+      <div style="font-family:'Playfair Display',serif;font-size:42px;font-weight:700;font-style:italic;color:#fff;line-height:1.15;letter-spacing:1px">Rust Repair,</div>
+      <div style="font-family:'Playfair Display',serif;font-size:42px;font-weight:700;font-style:italic;color:#fff;line-height:1.15;letter-spacing:1px">Restoration</div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:4px">
+        <div style="height:1px;background:#cc0000;width:30px"></div>
+        <div style="font-family:'Playfair Display',serif;font-size:42px;font-weight:700;font-style:italic;color:#cc0000;line-height:1.15;letter-spacing:1px">&amp; Customization</div>
+        <div style="height:1px;background:#cc0000;width:30px"></div>
+      </div>
     </div>
-    <div style="width:50px;height:3px;background:#cc0000;margin-bottom:20px"></div>
-    <div style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.7;margin-bottom:32px;max-width:320px">Tell me about your vehicle and what you need — I'll get back to you within 24-48 hours.</div>
+    <div style="width:50px;height:3px;background:#cc0000;margin-bottom:18px"></div>
+    <div style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:32px;max-width:300px">Tell me about your vehicle and what you need — I'll get back to you within 24-48 hours.</div>
     <button class="btn-next" onclick="startForm()" style="max-width:260px;margin:0 auto;">Get started</button>
   </div>
 </div>
