@@ -51,22 +51,20 @@ textarea{resize:none;height:110px}
   <!-- Logo top centered -->
   <div style="position:absolute;top:0;left:0;right:0;z-index:2;padding:24px 24px 0;display:flex;flex-direction:column;align-items:center">
     <img src="logo.png" alt="The Shop" style="width:220px;display:block;image-rendering:-webkit-optimize-contrast;">
-    <!-- F3 flipped border -->
     <svg class="f3-up" viewBox="0 0 480 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 16 L0 4 L18 4" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M480 16 L480 4 L462 4" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><line x1="0" y1="9" x2="480" y2="9" stroke="#cc0000" stroke-width="4"/><line x1="0" y1="3" x2="480" y2="3" stroke="#cc0000" stroke-width="1" opacity="0.25"/></svg>
   </div>
   <!-- Centered content -->
-  <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:24px;width:100%;text-align:center">
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;width:100%;text-align:center">
     <div style="font-family:'Teko',sans-serif;font-weight:700;font-size:46px;color:#fff;line-height:1.15;transform:scaleY(0.75);transform-origin:top center;display:inline-block;margin-bottom:-8px">
-      <span style="color:#cc0000">Rust Repair</span><br>Restoration<br><span style="color:#cc0000">&amp;</span>
+      <span style="color:#cc0000">Rust Repair</span><br>Restoration<br><span style="color:#fff">&amp;</span>
     </div>
-    <!-- Customization full width red bar -->
-    <div style="background:#cc0000;width:100vw;max-width:480px;padding:0 24px 6px;margin-bottom:0">
-      <div style="font-family:'Teko',sans-serif;font-weight:700;font-size:46px;color:#fff;line-height:1.15;transform:scaleY(0.75);transform-origin:top center;display:inline-block">Customization</div>
+    <!-- Customization full width red bar, vertically centered -->
+    <div style="background:#cc0000;width:100%;display:flex;align-items:center;justify-content:center;height:52px">
+      <div style="font-family:'Teko',sans-serif;font-weight:700;font-size:46px;color:#fff;line-height:1;transform:scaleY(0.75);display:inline-block">Customization</div>
     </div>
-    <!-- F3 normal border -->
     <svg class="f3-down" viewBox="0 0 480 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="margin-top:12px"><path d="M0 0 L0 14 L18 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M480 0 L480 14 L462 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><line x1="0" y1="7" x2="480" y2="7" stroke="#cc0000" stroke-width="4"/><line x1="0" y1="14" x2="480" y2="14" stroke="#cc0000" stroke-width="1" opacity="0.25"/></svg>
-    <div style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.7;margin:18px 0 28px;max-width:300px">Tell me about your vehicle and what you need — I'll get back to you within 24-48 hours.</div>
-    <button class="btn-next" onclick="startForm()" style="max-width:260px;margin:0 auto;">Get started</button>
+    <div style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.7;margin:18px 24px 28px;max-width:320px">Tell me about your vehicle and what you need — I'll get back to you within 24-48 hours.</div>
+    <button class="btn-next" onclick="startForm()" style="max-width:260px;margin:0 auto;display:block;">Get started</button>
   </div>
 </div>
 
