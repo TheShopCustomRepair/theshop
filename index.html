@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Shop</title>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Teko:wght@700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:#000;min-height:100vh;font-family:Arial,sans-serif}
@@ -38,8 +38,8 @@ textarea{resize:none;height:110px}
 .success-screen{padding:80px 24px;text-align:center;display:none}
 .success-screen.active{display:block}
 .success-icon{width:72px;height:72px;background:#1a0000;border:2px solid #cc0000;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px}
-.f3-border{position:relative;width:100%;height:16px;margin-top:10px}
-.f3-border svg{width:100%;height:16px;overflow:visible}
+.f3-down{width:100%;height:16px;margin-top:10px;display:block}
+.f3-up{width:100%;height:16px;margin-top:10px;display:block}
 </style>
 </head>
 <body>
@@ -48,32 +48,24 @@ textarea{resize:none;height:110px}
 <div id="welcome" style="position:relative;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#000;overflow:hidden;text-align:center">
   <img src="bg.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.55">
   <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.45);z-index:1;pointer-events:none"></div>
+  <!-- Logo top centered -->
   <div style="position:absolute;top:0;left:0;right:0;z-index:2;padding:24px 24px 0;display:flex;flex-direction:column;align-items:center">
     <img src="logo.png" alt="The Shop" style="width:220px;display:block;image-rendering:-webkit-optimize-contrast;">
-    <!-- F3 border -->
-    <div class="f3-border">
-      <svg viewBox="0 0 480 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 0 L0 14 L18 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M480 0 L480 14 L462 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        <line x1="0" y1="7" x2="480" y2="7" stroke="#cc0000" stroke-width="4"/>
-        <circle cx="0" cy="7" r="5" fill="#cc0000"/>
-        <circle cx="480" cy="7" r="5" fill="#cc0000"/>
-        <line x1="0" y1="14" x2="480" y2="14" stroke="#cc0000" stroke-width="1" opacity="0.25"/>
-      </svg>
-    </div>
+    <!-- F3 flipped border -->
+    <svg class="f3-up" viewBox="0 0 480 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 16 L0 4 L18 4" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M480 16 L480 4 L462 4" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><line x1="0" y1="9" x2="480" y2="9" stroke="#cc0000" stroke-width="4"/><line x1="0" y1="3" x2="480" y2="3" stroke="#cc0000" stroke-width="1" opacity="0.25"/></svg>
   </div>
-  <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:24px;width:100%">
-    <div style="margin-bottom:20px;width:100%">
-      <div style="font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:#fff;line-height:1.15;letter-spacing:1px">Rust Repair,</div>
-      <div style="font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:#fff;line-height:1.15;letter-spacing:1px">Restoration</div>
-      <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:4px">
-        <div style="height:1px;background:#cc0000;width:30px"></div>
-        <div style="font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:#cc0000;line-height:1.15;letter-spacing:1px">&amp; Customization</div>
-        <div style="height:1px;background:#cc0000;width:30px"></div>
-      </div>
+  <!-- Centered content -->
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:24px;width:100%;text-align:center">
+    <div style="font-family:'Teko',sans-serif;font-weight:700;font-size:46px;color:#fff;line-height:1.15;transform:scaleY(0.75);transform-origin:top center;display:inline-block;margin-bottom:-8px">
+      <span style="color:#cc0000">Rust Repair</span><br>Restoration<br><span style="color:#cc0000">&amp;</span>
     </div>
-    <div style="width:50px;height:3px;background:#cc0000;margin-bottom:18px"></div>
-    <div style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:32px;max-width:300px">Tell me about your vehicle and what you need — I'll get back to you within 24-48 hours.</div>
+    <!-- Customization full width red bar -->
+    <div style="background:#cc0000;width:100vw;max-width:480px;padding:0 24px 6px;margin-bottom:0">
+      <div style="font-family:'Teko',sans-serif;font-weight:700;font-size:46px;color:#fff;line-height:1.15;transform:scaleY(0.75);transform-origin:top center;display:inline-block">Customization</div>
+    </div>
+    <!-- F3 normal border -->
+    <svg class="f3-down" viewBox="0 0 480 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="margin-top:12px"><path d="M0 0 L0 14 L18 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M480 0 L480 14 L462 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><line x1="0" y1="7" x2="480" y2="7" stroke="#cc0000" stroke-width="4"/><line x1="0" y1="14" x2="480" y2="14" stroke="#cc0000" stroke-width="1" opacity="0.25"/></svg>
+    <div style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.7;margin:18px 0 28px;max-width:300px">Tell me about your vehicle and what you need — I'll get back to you within 24-48 hours.</div>
     <button class="btn-next" onclick="startForm()" style="max-width:260px;margin:0 auto;">Get started</button>
   </div>
 </div>
@@ -89,7 +81,7 @@ textarea{resize:none;height:110px}
 <div class="screen" id="s1">
   <div class="header">
     <img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;">
-    <div class="f3-border"><svg viewBox="0 0 480 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L0 14 L18 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M480 0 L480 14 L462 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><line x1="0" y1="7" x2="480" y2="7" stroke="#cc0000" stroke-width="4"/><circle cx="0" cy="7" r="5" fill="#cc0000"/><circle cx="480" cy="7" r="5" fill="#cc0000"/><line x1="0" y1="14" x2="480" y2="14" stroke="#cc0000" stroke-width="1" opacity="0.25"/></svg></div>
+    <svg class="f3-down" viewBox="0 0 480 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L0 14 L18 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M480 0 L480 14 L462 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><line x1="0" y1="7" x2="480" y2="7" stroke="#cc0000" stroke-width="4"/><line x1="0" y1="14" x2="480" y2="14" stroke="#cc0000" stroke-width="1" opacity="0.25"/></svg>
   </div><br>
   <div class="step-label">Step 1 of 5</div>
   <div class="screen-heading">What do you need?</div>
@@ -105,7 +97,7 @@ textarea{resize:none;height:110px}
 <div class="screen" id="s2">
   <div class="header">
     <img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;">
-    <div class="f3-border"><svg viewBox="0 0 480 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L0 14 L18 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M480 0 L480 14 L462 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><line x1="0" y1="7" x2="480" y2="7" stroke="#cc0000" stroke-width="4"/><circle cx="0" cy="7" r="5" fill="#cc0000"/><circle cx="480" cy="7" r="5" fill="#cc0000"/><line x1="0" y1="14" x2="480" y2="14" stroke="#cc0000" stroke-width="1" opacity="0.25"/></svg></div>
+    <svg class="f3-down" viewBox="0 0 480 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L0 14 L18 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M480 0 L480 14 L462 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><line x1="0" y1="7" x2="480" y2="7" stroke="#cc0000" stroke-width="4"/><line x1="0" y1="14" x2="480" y2="14" stroke="#cc0000" stroke-width="1" opacity="0.25"/></svg>
   </div><br>
   <div class="step-label">Step 2 of 5</div>
   <div class="screen-heading">Tell me about your vehicle.</div>
@@ -120,7 +112,7 @@ textarea{resize:none;height:110px}
 <div class="screen" id="s3">
   <div class="header">
     <img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;">
-    <div class="f3-border"><svg viewBox="0 0 480 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L0 14 L18 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M480 0 L480 14 L462 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><line x1="0" y1="7" x2="480" y2="7" stroke="#cc0000" stroke-width="4"/><circle cx="0" cy="7" r="5" fill="#cc0000"/><circle cx="480" cy="7" r="5" fill="#cc0000"/><line x1="0" y1="14" x2="480" y2="14" stroke="#cc0000" stroke-width="1" opacity="0.25"/></svg></div>
+    <svg class="f3-down" viewBox="0 0 480 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L0 14 L18 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M480 0 L480 14 L462 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><line x1="0" y1="7" x2="480" y2="7" stroke="#cc0000" stroke-width="4"/><line x1="0" y1="14" x2="480" y2="14" stroke="#cc0000" stroke-width="1" opacity="0.25"/></svg>
   </div><br>
   <div class="step-label">Step 3 of 5</div>
   <div class="screen-heading">Describe the damage.</div>
@@ -141,7 +133,7 @@ textarea{resize:none;height:110px}
 <div class="screen" id="s4">
   <div class="header">
     <img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;">
-    <div class="f3-border"><svg viewBox="0 0 480 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L0 14 L18 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M480 0 L480 14 L462 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><line x1="0" y1="7" x2="480" y2="7" stroke="#cc0000" stroke-width="4"/><circle cx="0" cy="7" r="5" fill="#cc0000"/><circle cx="480" cy="7" r="5" fill="#cc0000"/><line x1="0" y1="14" x2="480" y2="14" stroke="#cc0000" stroke-width="1" opacity="0.25"/></svg></div>
+    <svg class="f3-down" viewBox="0 0 480 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L0 14 L18 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M480 0 L480 14 L462 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><line x1="0" y1="7" x2="480" y2="7" stroke="#cc0000" stroke-width="4"/><line x1="0" y1="14" x2="480" y2="14" stroke="#cc0000" stroke-width="1" opacity="0.25"/></svg>
   </div><br>
   <div class="step-label">Step 4 of 5</div>
   <div class="screen-heading">When do you want to start?</div>
@@ -158,7 +150,7 @@ textarea{resize:none;height:110px}
 <div class="screen" id="s5">
   <div class="header">
     <img src="logo.png" alt="The Shop" style="max-width:200px;width:100%;display:block;">
-    <div class="f3-border"><svg viewBox="0 0 480 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L0 14 L18 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M480 0 L480 14 L462 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><line x1="0" y1="7" x2="480" y2="7" stroke="#cc0000" stroke-width="4"/><circle cx="0" cy="7" r="5" fill="#cc0000"/><circle cx="480" cy="7" r="5" fill="#cc0000"/><line x1="0" y1="14" x2="480" y2="14" stroke="#cc0000" stroke-width="1" opacity="0.25"/></svg></div>
+    <svg class="f3-down" viewBox="0 0 480 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L0 14 L18 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M480 0 L480 14 L462 14" fill="none" stroke="#cc0000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><line x1="0" y1="7" x2="480" y2="7" stroke="#cc0000" stroke-width="4"/><line x1="0" y1="14" x2="480" y2="14" stroke="#cc0000" stroke-width="1" opacity="0.25"/></svg>
   </div><br>
   <div class="step-label">Step 5 of 5</div>
   <div class="screen-heading">Your contact info.</div>
@@ -189,8 +181,7 @@ function checkS5(){const ok=document.getElementById("name").value.trim()&&docume
 function previewPhotos(input){const preview=document.getElementById("photoPreview");preview.innerHTML="";Array.from(input.files).forEach(f=>{const img=document.createElement("img");img.src=URL.createObjectURL(f);preview.appendChild(img);});}
 async function submitForm(){
   const btn=document.getElementById("next5");
-  btn.disabled=true;
-  btn.textContent="Sending...";
+  btn.disabled=true;btn.textContent="Sending...";
   const formData=new FormData();
   formData.append("service",data.service);
   formData.append("vehicle",document.getElementById("year").value+" "+document.getElementById("make").value+" "+document.getElementById("model").value);
@@ -202,20 +193,9 @@ async function submitForm(){
   if(document.getElementById("email").value)formData.append("email",document.getElementById("email").value);
   try{
     const res=await fetch("https://formspree.io/f/mreyrdvp",{method:"POST",body:formData,headers:{Accept:"application/json"}});
-    if(res.ok){
-      document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
-      document.getElementById("progress").style.display="none";
-      document.getElementById("success").classList.add("active");
-    }else{
-      btn.disabled=false;
-      btn.textContent="Submit request";
-      alert("Something went wrong. Please try again.");
-    }
-  }catch(e){
-    btn.disabled=false;
-    btn.textContent="Submit request";
-    alert("Something went wrong. Please try again.");
-  }
+    if(res.ok){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById("progress").style.display="none";document.getElementById("success").classList.add("active");}
+    else{btn.disabled=false;btn.textContent="Submit request";alert("Something went wrong. Please try again.");}
+  }catch(e){btn.disabled=false;btn.textContent="Submit request";alert("Something went wrong. Please try again.");}
 }
 </script>
 </body>
